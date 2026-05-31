@@ -3,15 +3,16 @@
 title: "Understanding Hashing: Hash Tables, Collisions, and Probing"
 date: 2026-05-31
 draft: false
+summary: "A practical guide to hash tables, collision handling, chaining, open addressing, probing strategies, and hash function design."
 tags:
   - Algorithms
   - Data Structures
   - Hashing
   - Hash Table
+aliases:
+  - /posts/hashing/
 
 ---
-
-# Understanding Hashing: Hash Tables, Collisions, and Probing
 
 Hashing is one of the most important techniques in data structures and algorithms. It is widely used in dictionaries, spell checkers, compiler symbol tables, file-system indexing, routing tables, and many other systems that require fast data access.
 

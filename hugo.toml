@@ -2,16 +2,27 @@ baseURL = "https://yh-max.github.io/"
 defaultContentLanguage = "en"
 title = "Yan Han"
 theme = "PaperMod"
+copyright = "2026 Yan Han"
 
 [pagination]
 pagerSize = 10
 
 [params]
 author = "Yan Han"
+description = "Technical notes and project write-ups on algorithms, computer vision, research, and software systems."
+mainSections = ["algorithms", "computer-vision", "projects", "research"]
 ShowReadingTime = true
 ShowCodeCopyButtons = true
 ShowBreadCrumbs = true
 ShowPostNavLinks = true
+
+[params.homeInfoParams]
+Title = "Yan Han"
+Content = "Technical notes, project write-ups, and research logs across algorithms, computer vision, and practical systems."
+
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/yh-max"
 
 [[menu.main]]
 name = "Algorithms"

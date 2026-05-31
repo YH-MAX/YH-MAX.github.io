@@ -1,30 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Understanding Hashing: Hash Tables, Collisions, and Probing | Yan Han</title>
 <meta name="keywords" content="Algorithms, Data Structures, Hashing, Hash Table">
-<meta name="description" content="Understanding Hashing: Hash Tables, Collisions, and Probing
-Hashing is one of the most important techniques in data structures and algorithms. It is widely used in dictionaries, spell checkers, compiler symbol tables, file-system indexing, routing tables, and many other systems that require fast data access.
-The main idea of hashing is simple:
-
-Instead of searching for data one by one, we compute where the data should be stored.
-
-This is why hash tables can often support search, insertion, and deletion in O(1) average time.">
+<meta name="description" content="A practical guide to hash tables, collision handling, chaining, open addressing, probing strategies, and hash function design.">
 <meta name="author" content="Yan Han">
-<link rel="canonical" href="http://localhost:1313/algorithms/hashing/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.89ca4972ab5e6aaa05e9a0dae0c4bb64b26585bc79e36f5cf33614eea0283abe.css" integrity="sha256-icpJcqteaqoF6aDa4MS7ZLJlhbx5429c8zYU7qAoOr4=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://yh-max.github.io/algorithms/hashing/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.6a39dfa30dfc6851cde821a822b1c13d5a24bd877a19d1fb2b982d28eb454153.css" integrity="sha256-ajnfow38aFHN6CGoIrHBPVokvYd6GdH7K5gtKOtFQVM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://yh-max.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://yh-max.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://yh-max.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://yh-max.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://yh-max.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/algorithms/hashing/">
+<link rel="alternate" hreflang="en" href="https://yh-max.github.io/algorithms/hashing/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,13 +64,84 @@ This is why hash tables can often support search, insertion, and deletion in O(1
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://yh-max.github.io/algorithms/hashing/">
+  <meta property="og:site_name" content="Yan Han">
+  <meta property="og:title" content="Understanding Hashing: Hash Tables, Collisions, and Probing">
+  <meta property="og:description" content="A practical guide to hash tables, collision handling, chaining, open addressing, probing strategies, and hash function design.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="algorithms">
+    <meta property="article:published_time" content="2026-05-31T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-05-31T00:00:00+00:00">
+    <meta property="article:tag" content="Algorithms">
+    <meta property="article:tag" content="Data Structures">
+    <meta property="article:tag" content="Hashing">
+    <meta property="article:tag" content="Hash Table">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Understanding Hashing: Hash Tables, Collisions, and Probing">
+  <meta name="twitter:description" content="A practical guide to hash tables, collision handling, chaining, open addressing, probing strategies, and hash function design.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Algorithms",
+      "item": "https://yh-max.github.io/algorithms/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Understanding Hashing: Hash Tables, Collisions, and Probing",
+      "item": "https://yh-max.github.io/algorithms/hashing/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Understanding Hashing: Hash Tables, Collisions, and Probing",
+  "name": "Understanding Hashing: Hash Tables, Collisions, and Probing",
+  "description": "A practical guide to hash tables, collision handling, chaining, open addressing, probing strategies, and hash function design.",
+  "keywords": [
+    "Algorithms", "Data Structures", "Hashing", "Hash Table"
+  ],
+  "articleBody": "Hashing is one of the most important techniques in data structures and algorithms. It is widely used in dictionaries, spell checkers, compiler symbol tables, file-system indexing, routing tables, and many other systems that require fast data access.\nThe main idea of hashing is simple:\nInstead of searching for data one by one, we compute where the data should be stored.\nThis is why hash tables can often support search, insertion, and deletion in O(1) average time.\n1. Why Do We Need Hashing? Suppose we store data in a normal list or array.\nIf we want to find a specific item, we may need to check each element one by one.\n[12, 25, 37, 41, 58] If we want to search for 58, we may need to scan from the beginning until we find it.\nThis gives us a time complexity of:\nO(n) For a small amount of data, this is fine. But for large systems, such as databases or dictionaries, checking items one by one is too slow.\nHashing solves this problem by using a hash function to compute the index directly.\n2. Direct Addressing: The Simple Idea Before understanding hashing, we should first understand direct addressing.\nIn direct addressing, the key itself is used as the index of an array.\nFor example, if the key is 5, we store the value at index 5.\nT[5] = value Searching is very fast because we can directly access the position.\nSearch key 5 → go to T[5] Therefore, search, insertion, and deletion can all take:\nO(1) Problem with Direct Addressing Direct addressing works well only when the key range is small.\nFor example, if the largest possible key is 1,000,000, we need an array of size 1,000,001.\nBut what if we only store 100 actual records?\nMost of the array would be empty, which wastes a lot of memory.\nSo the problem is:\nDirect addressing is fast, but it can waste too much space.\nThis is where hashing becomes useful.\n3. What Is Hashing? Hashing is a technique that maps a key to an index in a smaller table.\nInstead of storing a key directly at index k, we store it at index h(k).\nHere, h(k) is called a hash function.\nA simple example is:\nh(k) = k mod m where:\nk = key m = size of hash table Example:\nm = 10 h(15) = 15 mod 10 = 5 h(27) = 27 mod 10 = 7 h(34) = 34 mod 10 = 4 So the keys are stored like this:\nIndex 4 → 34 Index 5 → 15 Index 7 → 27 This allows us to use a smaller table instead of creating a huge array.\n4. What Is a Hash Table? A hash table is usually implemented using an array.\nIt uses a hash function to decide where each key should be stored.\nKey → Hash Function → Index → Hash Table For example:\n15 → h(15) → 5 So key 15 is stored at index 5.\nThe reason hash tables are fast is that the hash function directly computes the position of the key.\nIn the average case, a hash table supports:\nOperation Average Case Search O(1) Insert O(1) Delete O(1) However, this performance depends on two important factors:\nThe quality of the hash function How collisions are handled 5. What Is a Collision? A collision occurs when two different keys produce the same hash table index.\nExample:\nh(k) = k mod 10 h(15) = 5 h(25) = 5 Both 15 and 25 want to be stored at index 5.\nIndex 5 → 15 Index 5 → 25 This is a collision.\nCollisions happen because the number of possible keys is usually much larger than the number of slots in the hash table.\nTherefore, a hash table must have a strategy to handle collisions.\nThere are two common collision handling methods:\nChaining Open addressing 6. Collision Handling Method 1: Chaining In chaining, each slot of the hash table stores a linked list.\nIf multiple keys hash to the same index, they are stored in the same linked list.\nExample:\nh(15) = 5 h(25) = 5 h(35) = 5 The hash table becomes:\nIndex 5 → [15] → [25] → [35] Instead of replacing the old value, we add the new value into the chain.\nAdvantages of Chaining Chaining is easy to implement. It is also flexible because the hash table does not become full easily. If more keys collide at the same index, we can keep adding them into the linked list.\nChaining is useful when we do not know how many keys will be inserted or deleted.\nDisadvantages of Chaining The main disadvantage is that long chains can reduce performance.\nIf many keys are stored in the same chain, searching may become slow.\nIn the worst case, all keys may hash to the same slot:\nIndex 5 → [k1] → [k2] → [k3] → ... → [kn] Then the hash table behaves like a linked list, and searching becomes:\nO(n) Chaining also requires extra memory for storing links between nodes.\n7. Load Factor in Chaining The load factor measures how full the hash table is.\nIt is usually represented by the Greek letter alpha:\nα = n / m where:\nn = number of keys m = number of slots in the hash table In chaining, the load factor represents the average number of elements stored in each chain.\nThe average time complexity of chaining is:\nO(1 + α) This means:\nO(1) → compute the hash index O(α) → search inside the chain If the load factor is small, chains are short and performance is good.\nIf the load factor is large, chains become longer and search becomes slower.\n8. Chaining Time Complexity Operation Best Case Average Case Worst Case Search O(1) O(1 + α) O(n) Insert O(1) O(1) O(n) Delete O(1) O(1 + α) O(n) For insertion, the average case is usually O(1) if we insert directly at the head of the chain.\nHowever, if we first check whether the key already exists, insertion may require searching the chain first.\n9. Collision Handling Method 2: Open Addressing In open addressing, all keys are stored directly inside the hash table itself.\nUnlike chaining, open addressing does not use linked lists.\nIf a collision occurs, the algorithm searches for another available slot.\nThis process is called probing.\nExample:\nh(15) = 5 If index 5 is empty, insert 15 there.\nIndex 5 → 15 Now suppose:\nh(25) = 5 But index 5 is already occupied.\nSo we probe another slot.\nIndex 5 → occupied Index 6 → empty Then we store 25 at index 6.\nIndex 6 → 25 In open addressing, the load factor must be less than 1:\n0 ≤ α \u003c 1 This is because every key must be stored inside the table itself.\nIf the table is full, no new key can be inserted unless the table is resized.\n10. Probing in Open Addressing Probing means checking possible positions in the hash table until we find the required key or an empty slot.\nFor insertion:\nKeep probing until an empty slot is found. For search:\nKeep probing until the key is found or an empty slot is reached. For deletion:\nSearch for the key, then mark the slot as DELETED. In open addressing, deletion is more complicated than insertion and search.\nIf we simply remove a key and mark its slot as empty, future searches may fail.\nTherefore, deleted slots are usually marked with a special value:\nDELETED This tells the search operation:\nDo not stop here. Continue probing.\n11. Linear Probing Linear probing is the simplest probing technique.\nIf the target slot is occupied, we check the next slot.\nThe formula is:\nh(k, i) = (h'(k) + i) mod m where:\ni = probe number m = table size Example:\nIndex 5 → occupied Index 6 → occupied Index 7 → empty So we insert the key at index 7.\nProblem with Linear Probing Linear probing can cause primary clustering.\nPrimary clustering means that many occupied slots become grouped together.\nExample:\n[empty] [full] [full] [full] [full] [empty] When a cluster becomes large, future insertions and searches become slower.\n12. Quadratic Probing Quadratic probing does not simply move one step forward.\nInstead, it uses a quadratic formula to decide the next position.\nThe formula is:\nh(k, i) = (h'(k) + c1i + c2i²) mod m Quadratic probing reduces the primary clustering problem because it jumps in a wider pattern.\nHowever, it can still suffer from secondary clustering.\nSecondary clustering happens when keys with the same initial hash value follow the same probing sequence.\n13. Double Hashing Double hashing uses a second hash function to decide the step size.\nThe formula is:\nh(k, i) = (h1(k) + i × h2(k)) mod m Here:\nh1(k) = first hash function h2(k) = second hash function Double hashing is usually one of the best open addressing methods because it distributes probes more randomly compared with linear probing and quadratic probing.\nIt reduces clustering and often gives better performance.\n14. Open Addressing Time Complexity The performance of open addressing depends heavily on the load factor.\nα = n / m where:\nn = number of stored keys m = table size In open addressing:\n0 ≤ α \u003c 1 As the table becomes more full, the number of probes increases.\nUnsuccessful Search If the table is very full, an unsuccessful search may need to check many slots before finding an empty one.\nThe expected number of probes for unsuccessful search is:\nO(1 / (1 - α)) This means when α gets close to 1, the search becomes slower.\nFor example:\nα = 0.5 → 1 / (1 - 0.5) = 2 α = 0.9 → 1 / (1 - 0.9) = 10 When the table is 90% full, the algorithm may need many more probes.\nInsert Insertion in open addressing also depends on finding an empty slot.\nCase Time Complexity Best Case O(1) Average Case O(1 / (1 - α)) Worst Case O(n) Search Case Time Complexity Best Case O(1) Average Case O(1) Worst Case O(n) Delete Deletion requires searching for the key first and then marking it as DELETED.\nSo its time complexity follows the search operation.\nCase Time Complexity Best Case O(1) Average Case O(1) Worst Case O(n) 15. What Makes a Good Hash Function? A good hash function should distribute keys evenly across the hash table.\nIf the hash function distributes keys poorly, many keys may collide in the same area.\nThis causes long chains in chaining or many probes in open addressing.\nA good hash function should:\nBe fast to compute Distribute keys uniformly Reduce collisions Avoid obvious patterns There are two common hash function methods:\nDivision method Multiplication method 16. Division Method The division method uses the remainder after division.\nh(k) = k mod m Example:\nm = 10 h(25) = 25 mod 10 = 5 The choice of m is important.\nIf m is poorly chosen, many keys may collide.\nA prime number is often preferred because it helps reduce patterns in the distribution of keys.\n17. Multiplication Method The multiplication method works by multiplying the key by a constant value.\nThe general formula is:\nh(k) = floor(m × frac(kA)) where:\n0 \u003c A \u003c 1 frac(x) = fractional part of x m = table size A commonly suggested value for A is:\n0.618033988 The process is:\nMultiply the key k by a constant A Extract the fractional part Multiply it by m Take the floor value This gives an index between:\n0 and m - 1 18. Chaining vs Open Addressing Feature Chaining Open Addressing Storage Uses linked lists Stores everything inside the table Load Factor Can be greater than 1 Must be less than 1 Collision Handling Add to chain Probe for another slot Memory Usage Extra memory for links No extra linked list memory Deletion Easier More complicated Cache Performance Usually worse Usually better When to Use Unknown number of keys Fixed-size table with good load control Both methods are useful.\nChaining is easier to implement and more flexible.\nOpen addressing can be more memory-efficient and cache-friendly, but it requires careful handling of probing, deletion, and resizing.\n19. Final Time Complexity Summary Chaining Operation Average Case Worst Case Search O(1 + α) O(n) Insert O(1) O(n) Delete O(1 + α) O(n) Open Addressing Operation Average Case Worst Case Search O(1) O(n) Insert O(1 / (1 - α)) O(n) Delete O(1) O(n) The worst case happens when collisions are severe or when the table becomes too full.\n20. Hashing in Programming Languages Hashing is not only a theory topic. It is used in many real programming languages.\nExamples:\nLanguage Hash Table Implementation Java HashMap Python dict C++ unordered_map JavaScript Map Example in Java:\nimport java.util.HashMap; public class Main { public static void main(String[] args) { HashMap\u003cString, Integer\u003e scores = new HashMap\u003c\u003e(); scores.put(\"Alice\", 90); scores.put(\"Bob\", 85); System.out.println(scores.get(\"Alice\")); } } In this example, \"Alice\" is the key.\nJava uses hashing internally to find where the value 90 is stored.\nThis is why HashMap can retrieve values very quickly on average.\nConclusion Hashing is a powerful technique for storing and retrieving data efficiently.\nThe main idea is to use a hash function to convert a key into an index.\nThis allows hash tables to support search, insertion, and deletion in O(1) average time.\nHowever, collisions can happen when multiple keys map to the same index.\nTo handle collisions, we can use:\nChaining Open addressing Chaining stores colliding keys in linked lists, while open addressing stores all keys inside the table and uses probing to find available slots.\nA good hash function and a proper load factor are essential for keeping hash table operations efficient.\nHashing is widely used in real-world software systems, including dictionaries, databases, compilers, file systems, and programming language libraries such as Java HashMap.\n",
+  "wordCount" : "2312",
+  "inLanguage": "en",
+  "datePublished": "2026-05-31T00:00:00Z",
+  "dateModified": "2026-05-31T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Yan Han"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yh-max.github.io/algorithms/hashing/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Yan Han",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yh-max.github.io/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="header-nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Yan Han (Alt + H)">Yan Han</a>
+            <a href="https://yh-max.github.io/" accesskey="h" title="Yan Han (Alt + H)">Yan Han</a>
             <div class="logo-switches">
                 <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
@@ -102,22 +167,22 @@ This is why hash tables can often support search, insertion, and deletion in O(1
         </div>
         <ul id="menu" class="menu">
             <li>
-                <a href="http://localhost:1313/algorithms/" title="Algorithms">
+                <a href="https://yh-max.github.io/algorithms/" title="Algorithms">
                     <span>Algorithms</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/computer-vision/" title="Computer Vision">
+                <a href="https://yh-max.github.io/computer-vision/" title="Computer Vision">
                     <span>Computer Vision</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/projects/" title="Projects">
+                <a href="https://yh-max.github.io/projects/" title="Projects">
                     <span>Projects</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/research/" title="Research">
+                <a href="https://yh-max.github.io/research/" title="Research">
                     <span>Research</span>
                 </a>
             </li>
@@ -149,8 +214,7 @@ This is why hash tables can often support search, insertion, and deletion in O(1
 
 </div>
   </header> 
-  <div class="post-content md-content"><h1 id="understanding-hashing-hash-tables-collisions-and-probing">Understanding Hashing: Hash Tables, Collisions, and Probing<a hidden class="anchor" aria-hidden="true" href="#understanding-hashing-hash-tables-collisions-and-probing">#</a></h1>
-<p>Hashing is one of the most important techniques in data structures and algorithms. It is widely used in dictionaries, spell checkers, compiler symbol tables, file-system indexing, routing tables, and many other systems that require fast data access.</p>
+  <div class="post-content md-content"><p>Hashing is one of the most important techniques in data structures and algorithms. It is widely used in dictionaries, spell checkers, compiler symbol tables, file-system indexing, routing tables, and many other systems that require fast data access.</p>
 <p>The main idea of hashing is simple:</p>
 <blockquote>
 <p>Instead of searching for data one by one, we compute where the data should be stored.</p>
@@ -726,10 +790,10 @@ This is why hash tables can often support search, insertion, and deletion in O(1
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/algorithms/">Algorithms</a></li>
-      <li><a href="http://localhost:1313/tags/data-structures/">Data Structures</a></li>
-      <li><a href="http://localhost:1313/tags/hashing/">Hashing</a></li>
-      <li><a href="http://localhost:1313/tags/hash-table/">Hash Table</a></li>
+      <li><a href="https://yh-max.github.io/tags/algorithms/">Algorithms</a></li>
+      <li><a href="https://yh-max.github.io/tags/data-structures/">Data Structures</a></li>
+      <li><a href="https://yh-max.github.io/tags/hashing/">Hashing</a></li>
+      <li><a href="https://yh-max.github.io/tags/hash-table/">Hash Table</a></li>
     </ul>
 
   </footer>
@@ -737,7 +801,7 @@ This is why hash tables can often support search, insertion, and deletion in O(1
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">Yan Han</a></span> · 
+        <span>2026 Yan Han</span> · 
 
     
     

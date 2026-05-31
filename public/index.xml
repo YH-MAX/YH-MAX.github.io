@@ -2,37 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Yan Han</title>
-    <link>http://localhost:1313/</link>
+    <link>https://yh-max.github.io/</link>
     <description>Recent content on Yan Han</description>
     <generator>Hugo</generator>
     <language>en</language>
+    <copyright>2026 Yan Han</copyright>
     <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://yh-max.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Understanding Hashing: Hash Tables, Collisions, and Probing</title>
-      <link>http://localhost:1313/algorithms/hashing/</link>
+      <link>https://yh-max.github.io/algorithms/hashing/</link>
       <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/algorithms/hashing/</guid>
-      <description>&lt;h1 id=&#34;understanding-hashing-hash-tables-collisions-and-probing&#34;&gt;Understanding Hashing: Hash Tables, Collisions, and Probing&lt;/h1&gt;
-&lt;p&gt;Hashing is one of the most important techniques in data structures and algorithms. It is widely used in dictionaries, spell checkers, compiler symbol tables, file-system indexing, routing tables, and many other systems that require fast data access.&lt;/p&gt;
-&lt;p&gt;The main idea of hashing is simple:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Instead of searching for data one by one, we compute where the data should be stored.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;This is why hash tables can often support search, insertion, and deletion in &lt;strong&gt;O(1)&lt;/strong&gt; average time.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Understanding Hashing: Hash Tables, Collisions, and Probing</title>
-      <link>http://localhost:1313/posts/hashing/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/hashing/</guid>
-      <description>&lt;h1 id=&#34;understanding-hashing-hash-tables-collisions-and-probing&#34;&gt;Understanding Hashing: Hash Tables, Collisions, and Probing&lt;/h1&gt;
-&lt;p&gt;Hashing is one of the most important techniques in data structures and algorithms. It is widely used in dictionaries, spell checkers, compiler symbol tables, file-system indexing, routing tables, and many other systems that require fast data access.&lt;/p&gt;
-&lt;p&gt;The main idea of hashing is simple:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Instead of searching for data one by one, we compute where the data should be stored.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;This is why hash tables can often support search, insertion, and deletion in &lt;strong&gt;O(1)&lt;/strong&gt; average time.&lt;/p&gt;</description>
+      <guid>https://yh-max.github.io/algorithms/hashing/</guid>
+      <description>A practical guide to hash tables, collision handling, chaining, open addressing, probing strategies, and hash function design.</description>
     </item>
   </channel>
 </rss>
