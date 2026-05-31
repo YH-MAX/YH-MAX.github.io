@@ -4,11 +4,10 @@ title: "Understanding Hashing: Hash Tables, Collisions, and Probing"
 date: 2026-05-31
 draft: false
 tags:
-
-* Algorithms
-* Data Structures
-* Hashing
-* Hash Table
+  - Algorithms
+  - Data Structures
+  - Hashing
+  - Hash Table
 
 ---
 

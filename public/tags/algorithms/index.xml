@@ -9,31 +9,17 @@
     <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Understanding Hashing</title>
+      <title>Understanding Hashing: Hash Tables, Collisions, and Probing</title>
       <link>http://localhost:1313/posts/hashing/</link>
       <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/hashing/</guid>
-      <description>&lt;h1 id=&#34;understanding-hashing&#34;&gt;Understanding Hashing&lt;/h1&gt;
-&lt;p&gt;Hashing is one of the most important techniques in computer science.&lt;/p&gt;
-&lt;h2 id=&#34;why-do-we-need-hashing&#34;&gt;Why do we need Hashing?&lt;/h2&gt;
-&lt;p&gt;Many applications require fast search operations:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Dictionary&lt;/li&gt;
-&lt;li&gt;Database Index&lt;/li&gt;
-&lt;li&gt;Symbol Table&lt;/li&gt;
-&lt;li&gt;File System Index&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;what-is-a-hash-table&#34;&gt;What is a Hash Table?&lt;/h2&gt;
-&lt;p&gt;A hash table stores data using a hash function.&lt;/p&gt;
-&lt;p&gt;Example:&lt;/p&gt;
-&lt;p&gt;h(k) = k mod m&lt;/p&gt;
-&lt;h2 id=&#34;collision&#34;&gt;Collision&lt;/h2&gt;
-&lt;p&gt;A collision occurs when two keys map to the same slot.&lt;/p&gt;
-&lt;p&gt;Example:&lt;/p&gt;
-&lt;p&gt;15 → 5&lt;/p&gt;
-&lt;p&gt;25 → 5&lt;/p&gt;
-&lt;h2 id=&#34;chaining&#34;&gt;Chaining&lt;/h2&gt;
-&lt;p&gt;Store colliding elements in a linked list.&lt;/p&gt;</description>
+      <description>&lt;h1 id=&#34;understanding-hashing-hash-tables-collisions-and-probing&#34;&gt;Understanding Hashing: Hash Tables, Collisions, and Probing&lt;/h1&gt;
+&lt;p&gt;Hashing is one of the most important techniques in data structures and algorithms. It is widely used in dictionaries, spell checkers, compiler symbol tables, file-system indexing, routing tables, and many other systems that require fast data access.&lt;/p&gt;
+&lt;p&gt;The main idea of hashing is simple:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Instead of searching for data one by one, we compute where the data should be stored.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is why hash tables can often support search, insertion, and deletion in &lt;strong&gt;O(1)&lt;/strong&gt; average time.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -22,5 +22,19 @@
       <guid>http://localhost:1313/tags/data-structures/</guid>
       <description></description>
     </item>
+    <item>
+      <title>Hash Table</title>
+      <link>http://localhost:1313/tags/hash-table/</link>
+      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/hash-table/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hashing</title>
+      <link>http://localhost:1313/tags/hashing/</link>
+      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/hashing/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
