@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on Yan Han</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on Yan Han</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding Hashing</title>
+      <link>http://localhost:1313/posts/hashing/</link>
+      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/hashing/</guid>
+      <description>&lt;h1 id=&#34;understanding-hashing&#34;&gt;Understanding Hashing&lt;/h1&gt;
+&lt;p&gt;Hashing is one of the most important techniques in computer science.&lt;/p&gt;
+&lt;h2 id=&#34;why-do-we-need-hashing&#34;&gt;Why do we need Hashing?&lt;/h2&gt;
+&lt;p&gt;Many applications require fast search operations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Dictionary&lt;/li&gt;
+&lt;li&gt;Database Index&lt;/li&gt;
+&lt;li&gt;Symbol Table&lt;/li&gt;
+&lt;li&gt;File System Index&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;what-is-a-hash-table&#34;&gt;What is a Hash Table?&lt;/h2&gt;
+&lt;p&gt;A hash table stores data using a hash function.&lt;/p&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;p&gt;h(k) = k mod m&lt;/p&gt;
+&lt;h2 id=&#34;collision&#34;&gt;Collision&lt;/h2&gt;
+&lt;p&gt;A collision occurs when two keys map to the same slot.&lt;/p&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;p&gt;15 → 5&lt;/p&gt;
+&lt;p&gt;25 → 5&lt;/p&gt;
+&lt;h2 id=&#34;chaining&#34;&gt;Chaining&lt;/h2&gt;
+&lt;p&gt;Store colliding elements in a linked list.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

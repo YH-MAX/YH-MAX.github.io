@@ -1,0 +1,13 @@
+baseURL = "https://yhan6978.github.io/"
+languageCode = "en-us"
+title = "Yan Han"
+theme = "PaperMod"
+
+[pagination]
+pagerSize = 10
+
+[params]
+author = "Yan Han"
+ShowReadingTime = true
+ShowCodeCopyButtons = true
+ShowBreadCrumbs = true
