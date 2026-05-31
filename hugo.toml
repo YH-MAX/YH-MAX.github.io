@@ -1,5 +1,5 @@
-baseURL = "https://yhan6978.github.io/"
-languageCode = "en-us"
+baseURL = "https://yh-max.github.io/"
+defaultContentLanguage = "en"
 title = "Yan Han"
 theme = "PaperMod"
 
@@ -11,3 +11,24 @@ author = "Yan Han"
 ShowReadingTime = true
 ShowCodeCopyButtons = true
 ShowBreadCrumbs = true
+ShowPostNavLinks = true
+
+[[menu.main]]
+name = "Algorithms"
+url = "/algorithms/"
+weight = 1
+
+[[menu.main]]
+name = "Computer Vision"
+url = "/computer-vision/"
+weight = 2
+
+[[menu.main]]
+name = "Projects"
+url = "/projects/"
+weight = 3
+
+[[menu.main]]
+name = "Research"
+url = "/research/"
+weight = 4
